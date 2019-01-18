@@ -1,0 +1,7 @@
+<app-calculator-operation-selector
+    [availableOperations]="availableOperations"
+    (scheduledOperation)="onScheduledOperation($event)">
+</app-calculator-operation-selector>
+<app-calculator-display [scheduledOperations]="scheduledOperations"></app-calculator-display>
+<app-calculator-controls (reset)="onReset()" (calculate)="onCalculate()"></app-calculator-controls>
+<app-calculator-result [result]="result"></app-calculator-result>

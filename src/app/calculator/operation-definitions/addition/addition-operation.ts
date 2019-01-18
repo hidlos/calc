@@ -1,6 +1,6 @@
-import {Operation} from './operation';
+import {Operation} from '../operation';
 
-export class AdditionOperation implements Operation {
+export class AdditionOperation extends Operation {
 
     public name = 'Addition';
 

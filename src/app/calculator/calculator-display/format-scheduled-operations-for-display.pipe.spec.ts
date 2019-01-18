@@ -1,12 +1,12 @@
 import {FormatScheduledOperationsForDisplayPipe} from './format-scheduled-operations-for-display.pipe';
-import {scheduledOperationMock} from '../../../../test/scheduled-operation-mock';
+import {firstScheduledOperationMock} from '../../../../test/scheduled-operation-mock';
 
-fdescribe('FormatScheduledOperationsForDisplayPipe', () => {
+describe('FormatScheduledOperationsForDisplayPipe', () => {
     describe('when asked to transform', () => {
         it('should transform it', () => {
             const pipe = new FormatScheduledOperationsForDisplayPipe();
-            const result = pipe.transform(scheduledOperationMock);
-            const expectedResult = `${scheduledOperationMock.operation.name} ${scheduledOperationMock.operand}`;
+            const result = pipe.transform(firstScheduledOperationMock);
+            const expectedResult = `${firstScheduledOperationMock.operation.name} ${firstScheduledOperationMock.operand}`;
             expect(result).toBe(expectedResult);
         });
     });

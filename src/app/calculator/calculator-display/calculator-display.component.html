@@ -1,0 +1,7 @@
+<mat-list role="list">
+    <mat-card>
+        <ng-container *ngFor="let scheduledOperation of scheduledOperations$ | async">
+            <mat-list-item role="listitem">{{scheduledOperation | formatScheduledOperationsForDisplay}}</mat-list-item>
+        </ng-container>
+    </mat-card>
+</mat-list>

@@ -1,0 +1,19 @@
+<div [formGroup]="selectOperation">
+    <mat-form-field appearance="outline">
+        <mat-label>Operation</mat-label>
+        <mat-select required formControlName="operation">
+            <mat-option>none</mat-option>
+            <ng-container *ngFor="let operation of availableOperations">
+                <mat-option [value]="operation">{{operation}}</mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>enter value</mat-label>
+        <input matInput type="string" formControlName="operand" required pattern="[0-9]*">
+    </mat-form-field>
+
+    <button mat-stroked-button type="submit" [disabled]="!selectOperation.valid" (click)="addOperation()">
+        Add step
+    </button>
+</div>
