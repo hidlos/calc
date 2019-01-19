@@ -1,16 +1,17 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CalculatorComponent} from './calculator.component';
-import {CalculatorServiceModule} from './calculator-service/calculator-service.module';
 import {RegisteredOperationsModule} from './operation-registrant/registered-operations-module';
 import {CalculatorDisplayComponent} from './calculator-display/calculator-display.component';
 import {FormatScheduledOperationsForDisplayPipe} from './calculator-display/format-scheduled-operations-for-display.pipe';
 import {CalculatorOperationSelectorComponent} from './calculator-operation-selector/calculator-operation-selector.component';
-import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatSelectModule} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CalculatorResultComponent} from './calculator-result/calculator-result.component';
 import {CalculatorControlsComponent} from './calculator-controls/calculator-controls.component';
+import {CalculatorServiceModule} from './services/calculator.service.module';
+import {RegisteredOperationProviderServiceModule} from './services/registered-operation-provider.service.module';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import {CalculatorControlsComponent} from './calculator-controls/calculator-cont
         CommonModule,
         CalculatorServiceModule,
         RegisteredOperationsModule,
+        RegisteredOperationProviderServiceModule,
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,

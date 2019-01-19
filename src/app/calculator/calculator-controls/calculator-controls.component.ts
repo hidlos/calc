@@ -1,19 +1,20 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
     selector: 'app-calculator-controls',
-    templateUrl: './calculator-controls.component.html'
+    templateUrl: './calculator-controls.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalculatorControlsComponent {
 
-    @Output('calculate') public calculateTrigger = new EventEmitter();
-    @Output('reset') public resetTrigger = new EventEmitter();
+    @Output() public calculate = new EventEmitter();
+    @Output() public reset = new EventEmitter();
 
-    public calculate(): void {
-        this.calculateTrigger.emit();
+    public onCalculate(): void {
+        this.calculate.emit();
     }
 
-    public reset(): void {
-        this.resetTrigger.emit();
+    public onReset(): void {
+        this.reset.emit();
     }
 }

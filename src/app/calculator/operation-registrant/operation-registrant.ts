@@ -5,6 +5,6 @@ export type RegistrableOperation = new() => Operation;
 
 export class OperationRegistrant {
     public static getRegisteredOperations(): Array<Operation> {
-        return CalculatorOperations.map((Operation) => new Operation());
+        return CalculatorOperations.map((OperationConstructor) => new OperationConstructor());
     }
 }

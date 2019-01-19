@@ -7,5 +7,5 @@ import {EMPTY, Observable} from 'rxjs';
     templateUrl: './calculator-display.component.html'
 })
 export class CalculatorDisplayComponent {
-    @Input('scheduledOperations') public scheduledOperations$: Observable<Array<ScheduledOperation>> = EMPTY;
+    @Input() public scheduledOperations$: Observable<Array<ScheduledOperation>> = EMPTY;
 }

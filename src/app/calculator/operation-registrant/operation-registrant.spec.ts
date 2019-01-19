@@ -10,7 +10,7 @@ describe(OperationRegistrant.name, () => {
         });
 
         function getExpectedRegisteredOperations(): Array<Operation> {
-            return CalculatorOperations.map((Operation) => new Operation());
+            return CalculatorOperations.map((OperationConstructor) => new OperationConstructor());
         }
     });
 });

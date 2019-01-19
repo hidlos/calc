@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CalculatorService} from './calculator-service/calculator.service';
+import {CalculatorService} from './services/calculator.service';
 import {Observable} from 'rxjs';
 import {OperationToSchedule, ScheduledOperation} from './operation-definitions/scheduled-operation';
 import {OperationName} from './operation-definitions/operation';
+import {RegisteredOperationProviderService} from './services/registered-operation-provider.service';
 
 @Component({
     selector: 'app-calculator',
@@ -10,22 +11,23 @@ import {OperationName} from './operation-definitions/operation';
 })
 export class CalculatorComponent implements OnInit {
 
-    public constructor(private readonly calculatorService: CalculatorService) {
+    public constructor(private readonly calculatorService: CalculatorService,
+                       private readonly registeredOperationsProvider: RegisteredOperationProviderService) {
     }
 
     public ngOnInit(): void {
         this.calculatorService.reset();
     }
 
-    public get scheduledOperations(): Observable<Array<ScheduledOperation>> {
+    public get scheduledOperations$(): Observable<Array<ScheduledOperation>> {
         return this.calculatorService.scheduledOperations$;
     }
 
     public get availableOperations(): Array<OperationName> {
-        return this.calculatorService.getListOfOperations();
+        return this.registeredOperationsProvider.getRegisteredOperationNames();
     }
 
-    public get result(): Observable<number> {
+    public get result$(): Observable<number> {
         return this.calculatorService.result$;
     }
 
@@ -34,11 +36,10 @@ export class CalculatorComponent implements OnInit {
     }
 
     public onReset(): void {
-        console.log('zde');
         this.calculatorService.reset();
     }
 
     public onCalculate(): void {
-        this.calculatorService.calculate()
+        this.calculatorService.calculate();
     }
 }
