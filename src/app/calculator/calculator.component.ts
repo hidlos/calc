@@ -31,6 +31,10 @@ export class CalculatorComponent implements OnInit {
         return this.calculatorService.result$;
     }
 
+    public get error$(): Observable<Error | undefined> {
+        return this.calculatorService.error$;
+    }
+
     public onScheduledOperation(operationToSchedule: OperationToSchedule): void {
         this.calculatorService.scheduleOperation(operationToSchedule);
     }

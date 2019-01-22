@@ -15,13 +15,10 @@ describe(MultiplyOperation.name, () => {
     });
 
     describe('when ask to perform operation', () => {
-
-        beforeEach(() => operation = new MultiplyOperation());
-
-        it('should return the sum of two operands', () => {
-            const sum = operation.perform(firstOperandMock, secondOperandMock);
-            const expectedSum = firstOperandMock * secondOperandMock;
-            expect(sum).toBe(expectedSum);
+        it('should return the multiple of two operands', () => {
+            const multiple = operation.perform(firstOperandMock, secondOperandMock);
+            const expectedMultiple = firstOperandMock * secondOperandMock;
+            expect(multiple).toBe(expectedMultiple);
         });
     });
 });

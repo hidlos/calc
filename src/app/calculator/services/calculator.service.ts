@@ -12,10 +12,10 @@ import {RegisteredOperationProviderService} from './registered-operation-provide
 export class CalculatorService {
 
     private static initialResult = 0;
-
     private scheduledOperations: Array<ScheduledOperation> = this.initialScheduledOperations;
 
-    public result$ = new BehaviorSubject(CalculatorService.initialResult);
+    public result$ = new BehaviorSubject<number>(CalculatorService.initialResult);
+    public error$ = new BehaviorSubject<Error | undefined>(undefined);
     public scheduledOperations$ = new BehaviorSubject(this.initialScheduledOperations);
 
     public constructor(private readonly registeredOperationsProvider: RegisteredOperationProviderService) {
@@ -31,19 +31,38 @@ export class CalculatorService {
         this.scheduledOperations = this.initialScheduledOperations;
         this.scheduledOperations$.next(this.scheduledOperations);
         this.result$.next(CalculatorService.initialResult);
+        this.error$.next(undefined);
     }
 
     public calculate(): void {
+        try {
+            this.processOperations();
+        } catch (e) {
+        }
+    }
+
+    private processOperations(): void {
         let count = 0;
         for (let operationIndex = this.scheduledOperations.length - 1; operationIndex >= 0; operationIndex--) {
-            const operation = this.scheduledOperations[operationIndex].operation;
-            const operand = this.scheduledOperations[operationIndex].operand;
-            count = operation.perform(count, operand);
+            count = this.processOperation(count, operationIndex);
         }
         this.result$.next(count);
     }
 
+    private processOperation(input: number, operationIndex: number): number {
+        try {
+            return this.performOperation(input, operationIndex);
+        } catch (error) {
+            this.error$.next(error);
+            throw error;
+        }
+    }
 
+    private performOperation(input: number, operationIndex: number): number {
+        const operation = this.scheduledOperations[operationIndex].operation;
+        const operand = this.scheduledOperations[operationIndex].operand;
+        return operation.perform(input, operand);
+    }
 
     private addOperationToScheduled(operation: Operation, operand: Operand): void {
         const scheduledOperation = {operation, operand};

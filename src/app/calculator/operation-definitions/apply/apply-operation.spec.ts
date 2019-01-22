@@ -19,12 +19,9 @@ describe(ApplyOperation.name, () => {
     });
 
     describe('when ask to perform operation', () => {
-
-        beforeEach(() => operation = new ApplyOperation());
-
-        it('should return the sum of two operands', () => {
-            const sum = operation.perform(firstOperandMock, secondOperandMock);
-            expect(sum).toBe(secondOperandMock);
+        it('should always return second operand', () => {
+            const expectedOperand = operation.perform(firstOperandMock, secondOperandMock);
+            expect(expectedOperand).toBe(secondOperandMock);
         });
     });
 });

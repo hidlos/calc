@@ -12,6 +12,8 @@ import {CalculatorResultComponent} from './calculator-result/calculator-result.c
 import {CalculatorControlsComponent} from './calculator-controls/calculator-controls.component';
 import {CalculatorServiceModule} from './services/calculator.service.module';
 import {RegisteredOperationProviderServiceModule} from './services/registered-operation-provider.service.module';
+import {CalculatorErrorComponent} from './calculator-error/calculator-error.component';
+import {PrintPropertyPipe} from './calculator-error/print-property.pipe';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import {RegisteredOperationProviderServiceModule} from './services/registered-op
         CalculatorOperationSelectorComponent,
         CalculatorResultComponent,
         CalculatorControlsComponent,
-        FormatScheduledOperationsForDisplayPipe
+        CalculatorErrorComponent,
+        FormatScheduledOperationsForDisplayPipe,
+        PrintPropertyPipe
     ],
     imports: [
         CommonModule,

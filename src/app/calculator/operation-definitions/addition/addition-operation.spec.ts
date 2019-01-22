@@ -15,9 +15,6 @@ describe(AdditionOperation.name, () => {
     });
 
     describe('when ask to perform operation', () => {
-
-        beforeEach(() => operation = new AdditionOperation());
-
         it('should return the sum of two operands', () => {
             const sum = operation.perform(firstOperandMock, secondOperandMock);
             const expectedSum = firstOperandMock + secondOperandMock;
