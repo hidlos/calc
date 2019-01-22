@@ -19,7 +19,7 @@ export class CalculatorOperationSelectorComponent {
 
     public addOperation(): void {
         if (this.selectOperation.valid) {
-            this.scheduledOperation.emit(this.buildOperationToSchedule())
+            this.scheduledOperation.emit(this.buildOperationToSchedule());
         }
     }
 
@@ -27,13 +27,13 @@ export class CalculatorOperationSelectorComponent {
         return {
             operation: [''],
             operand: ['', [Validators.required, Validators.pattern('[0-9]*')]]
-        }
+        };
     }
 
     private buildOperationToSchedule(): OperationToSchedule {
         return {
             operationName: this.selectOperation.get('operation')!.value,
             operand: Number(this.selectOperation.get('operand')!.value)
-        }
+        };
     }
 }

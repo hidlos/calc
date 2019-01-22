@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CalculatorControlsComponent} from './calculator-controls.component';
-import {Button, getElementById} from 'test/element-getter';
+import {ClickableElement, getElementById} from 'test/element-getter';
 
 describe(CalculatorControlsComponent.name, () => {
     let component: CalculatorControlsComponent;
@@ -38,8 +38,8 @@ describe(CalculatorControlsComponent.name, () => {
         });
     });
 
-    function getButton(id: 'reset' | 'calculate'): Button {
-        return getElementById<Button>(fixture, id);
+    function getButton(id: 'reset' | 'calculate'): ClickableElement {
+        return getElementById<ClickableElement>(fixture, id);
     }
 
 });
